@@ -32,7 +32,7 @@ class VIV_Model_From_URL:
         if filename is None or filename == "":
             try:
                 response = requests.get(url, stream=True)
-                filename = response.headers.get('content-disposition').split("filename=")[1].strip('"')
+                filename = response.headers.get('content-disposition').split("filename=")[1].strip('";')
             except:
                 filename = url.split("/")[-1]
         console.print(f"{PURPLE_NAME} [bold yellow]filename: [/bold yellow]", filename)
