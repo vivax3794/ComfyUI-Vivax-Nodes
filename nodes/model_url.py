@@ -1,12 +1,9 @@
-from .. import console, PURPLE_NAME
+from .. import console, PURPLE_NAME, WILDCARD
 import requests
 import os
 import folder_paths
 from comfy.utils import ProgressBar
 
-class AnyType(str):
-    def __ne__(self, __value: object) -> bool:
-        return False
 
 class VIV_Model_From_URL:
     @classmethod
@@ -22,10 +19,10 @@ class VIV_Model_From_URL:
                     },
                 }
 
-    RETURN_TYPES = (AnyType("*"),)
+    RETURN_TYPES = (WILDCARD,)
     RETURN_NAMES = ("ckpt_name",)
     FUNCTION = "download"
-    CATEGORY = "vivax/url"
+    CATEGORY = "vivax"
 
     def download(self, url, folder, force_update, filename=None):
         console.print(f"{PURPLE_NAME} [bold yellow]getting filename of: [/bold yellow]", url)

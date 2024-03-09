@@ -1,10 +1,4 @@
-from .. import console
-
-class AnyType(str):
-    def __ne__(self, __value: object) -> bool:
-        return False
-
-WILDCARD = AnyType("*")
+from .. import console, WILDCARD
 
 class VIV_Inspect:
     @classmethod
@@ -15,15 +9,15 @@ class VIV_Inspect:
                     }
                 }
 
-    RETURN_TYPES = ()
-    RETURN_NAME = ()
+    RETURN_TYPES = (WILDCARD,)
+    RETURN_NAMES = ("*",)
     FUNCTION = "inspect"
     CATEGORY = "vivax/debug"
     OUTPUT_NODE = True
 
     def inspect(self, item):
         console.print("[bold yellow]INSPECT:[/bold yellow]", item)
-        return ()
+        return (item,)
 
 class VIV_Any_String:
     @classmethod
