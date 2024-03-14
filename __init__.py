@@ -14,6 +14,7 @@ console.print(f"{PURPLE_NAME} Nodes package loaded.")
 from .nodes.debug import *
 from .nodes.model_url import *
 from .nodes.batch_loop import *
+from .nodes.io_stuff import NODES
 
 NODE_CLASS_MAPPINGS = {
         "Inspect": VIV_Inspect,
@@ -23,6 +24,7 @@ NODE_CLASS_MAPPINGS = {
         "Get Chunk": VIV_Get_Chunk,
         "Join Chunks": VIV_Join_Chunks,
         }
+NODE_CLASS_MAPPINGS.update(NODES)
 
 
 MANIFEST = {

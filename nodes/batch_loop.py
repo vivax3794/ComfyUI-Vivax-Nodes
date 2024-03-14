@@ -1,5 +1,7 @@
 from .. import console, WILDCARD, PURPLE_NAME
 import random
+from torch import Tensor
+import torch
 
 class VIV_Chunk_Up:
     @classmethod
@@ -73,16 +75,23 @@ class VIV_Join_Chunks:
 
     def combine_chunks(self, chunk, batch=None):
         latent = False
+        tensor = False
         if isinstance(chunk, dict) and "samples" in chunk:
             chunk = chunk["samples"]
             latent = True
+        elif isinstance(chunk, Tensor):
+            tensor = True
 
         if batch is None:
-            batch = []
-        elif "samples" in batch:
+            batch = [] if not tensor else Tensor()
+        elif latent:
             batch = batch["samples"]
 
-        batch.extend(chunk)
+        if tensor:
+            batch = torch.cat((batch, chunk), dim=0)
+        else:
+            batch.extend(chunk)
+
         if latent:
             return ({"samples": batch},)
         return (batch,)
