@@ -34,7 +34,13 @@ class VIV_Swww_Wallpaper:
         return ()
 
 NODES = {}
-if subprocess.run(["which", "swww"]).returncode == 0:
+
+try:
+    result = subprocess.run(["which", "swww"]).returncode == 0
+except:
+    result = False
+
+if result:
     NODES["Set Wallpaper (Swww)"] = VIV_Swww_Wallpaper
 else:
     console.print(f"{PURPLE_NAME} Swww not found, skipping wallpaper node.")
