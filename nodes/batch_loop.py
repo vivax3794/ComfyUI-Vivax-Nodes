@@ -56,7 +56,10 @@ class VIV_Get_Chunk:
         if seed is None:
             seed = random.randint(0, 1000000)
 
-        return (chunks[index - one_index], seed + index,)
+        if one_index:
+                return (chunks[-index], seed + index,)
+        else:
+            return (chunks[index], seed + index,)
 
 class VIV_Join_Chunks:
     @classmethod
