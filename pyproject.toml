@@ -1,0 +1,15 @@
+[project]
+name = "comfyui-vivax-nodes"
+description = "Nodes:Inspect, Any String, Model From URL"
+version = "1.0.0"
+license = "LICENSE"
+dependencies = ["rich"]
+
+[project.urls]
+Repository = "https://github.com/vivax3794/ComfyUI-Vivax-Nodes"
+#  Used by Comfy Registry https://comfyregistry.org
+
+[tool.comfy]
+PublisherId = ""
+DisplayName = "ComfyUI-Vivax-Nodes"
+Icon = ""
